@@ -14,7 +14,10 @@ struct ImageData
 
 	int GetValue(int index)
 	{
-		return index >= size ? 0 : static_cast<int>(pixels[index]);
+		if (index >= size) index = size - channel;
+		else if (index < 0) index = 0;
+
+		return static_cast<int>(pixels[index]);
 	}
 };
 
@@ -56,7 +59,7 @@ private:
 		images[index].height = height;
 		images[index].channel = channel;
 		LoadToVector(index, width * height * channel, texture);
-		images[index].size = images[index].pixels.size();
+		images[index].size = static_cast<int>(images[index].pixels.size());
 		stbi_image_free(texture);
 	}
 
