@@ -8,17 +8,20 @@ Based on [Stupid Spherical Harmonics (SH) Tricks][def] and [A Gentle Introductio
 - [x] Using [PXDMath](https://github.com/alpertunga-bile/PixelDancerMath) library
 - [x] Skybox textures are taken from LearnOpenGL repository
 - [x] Using stb-image library for getting pixels
+- [x] Using AVX2(Advanced Vector Extension 2) 
 
 ## Results
 
 - 3 bands are used.
 
 ```
+Progress : %100 0.00 seconds
 ------------------------------------------------------------------------------------------
--- Gentle Introduction 2500 Samples
-Red   Channel : 176.24  -87.31  30.56   38.85   -19.09  -195.23 -16.78  18.46   -79.45
-Green Channel : 180.62  -90.11  31.15   38.25   -20.07  -201.06 -15.86  19.18   -83.21
-Blue  Channel : 180.97  -89.77  30.19   39.73   -21.19  -201.68 -17.55  19.95   -84.28
+-- A Gentle Introduction To PRT 2500 Samples
+Red   Channel : 146.17  -76.98  -7.71   2.87    1.68    -9.40   -34.86  3.66    -68.19
+Green Channel : 147.48  -77.36  -7.56   3.23    1.67    -9.75   -35.88  3.68    -70.02
+Blue  Channel : 146.13  -76.01  -9.06   3.11    1.20    -10.07  -32.76  3.54    -68.08
+Texture 6 is in progress (6 | 6) DONE!!!
 ------------------------------------------------------------------------------------------
 -- Stupid SH Tricks
 Red   Channel : 175.04  -17.14  44.01   4.37    6.79    -9.50   -3.80   1.30    -0.47

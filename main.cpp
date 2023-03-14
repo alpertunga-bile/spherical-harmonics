@@ -47,7 +47,7 @@ void StupidSH(Image& image, int nBands, std::vector<double>& Rresult, std::vecto
         {
             for (int x = 0; x < imageData.width * imageData.channel; x += imageData.channel)
             {
-                float u = static_cast<float>(x) / (static_cast<float>(imageData.width) * static_cast<float>(imageData.channel));
+                float u = static_cast<float>(x) / (static_cast<float>(imageData.width * imageData.channel));
                 float v = static_cast<float>(y) / static_cast<float>(imageData.height);
                 double fTemp = 1.0 + static_cast<double>(u * u) + static_cast<double>(v * v);
                 double fWt = 4.0 / (std::sqrt(fTemp) * fTemp);
@@ -119,7 +119,7 @@ void GentleIntroduction(Image& image, SphericalHarmonics& sh, int totalBands, in
     std::cout << "\n";
 
     double weight = 4.0 * PI;
-    double scale = weight / totalSample;
+    double scale = weight / static_cast<double>(totalSample);
 
     for (int i = 0; i < totalBands; i++)
     {

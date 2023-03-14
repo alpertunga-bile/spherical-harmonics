@@ -2,15 +2,7 @@
 
 #include <utility>
 #include "Vector3D.h"
-
-struct Vector2D
-{
-	Vector2D() = default;
-	Vector2D(double a, double b) : x(a), y(b) {}
-
-	double x = 0.0;
-	double y = 0.0;
-};
+#include "Vector2D.h"
 
 Vector3D Abs(Vector3D& v)
 {
@@ -59,7 +51,6 @@ std::pair<Vector2D, int> GetCubemapUVFace(Vector3D& pos)
 		uv = Vector2D(pos.x < 0.0 ? pos.z : -pos.z, -pos.y);
 	}
 
-	uv.x = uv.x * ma + 0.5;
-	uv.y = uv.y * ma + 0.5;
+	uv = uv * ma + Vector2D(0.5, 0.5);
 	return std::pair<Vector2D, int>(Abs(uv), face);
 }
