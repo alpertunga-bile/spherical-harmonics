@@ -42,7 +42,7 @@ void StupidSH(Image& image, int nBands, std::vector<double>& Rresult, std::vecto
     for (int i = 0; i < 6; i++)
     {
         ImageData imageData = image[i];
-        printf("At Texture %d\n", i + 1);
+        std::cout << "\rTexture " << i + 1 << " is in progress (" << i + 1 << " | 6)" << std::flush;
         for (int y = 0; y < imageData.height; y++)
         {
             for (int x = 0; x < imageData.width * imageData.channel; x += imageData.channel)
@@ -70,6 +70,8 @@ void StupidSH(Image& image, int nBands, std::vector<double>& Rresult, std::vecto
         Gresult[i] *= 4.0 * PI / fWtSum;
         Bresult[i] *= 4.0 * PI / fWtSum;
     }
+
+    std::cout << " DONE!!!\n";
 }
 
 void GentleIntroduction(Image& image, SphericalHarmonics& sh, int totalBands, int totalSample, std::vector<double>& Rresult, std::vector<double>& Gresult, std::vector<double>& Bresult)
@@ -101,14 +103,9 @@ void GentleIntroduction(Image& image, SphericalHarmonics& sh, int totalBands, in
         for (int b = 0; b < totalBands; b++)
         {
             double coeff = sample.coefficient[b];
-            if (std::isnan(coeff))
-            {
-                std::cout << "Found it";
-                exit(0);
-            }
-            Rresult[b] += rValue * coeff;
-            Gresult[b] += gValue * coeff;
-            Bresult[b] += bValue * coeff;
+            Rresult[b] += static_cast<double>(rValue) * coeff;
+            Gresult[b] += static_cast<double>(gValue) * coeff;
+            Bresult[b] += static_cast<double>(bValue) * coeff;
         }
 
         auto end = std::chrono::system_clock::now();
@@ -146,12 +143,11 @@ int main()
     std::vector<double> Gresult(totalBands);
     std::vector<double> Bresult(totalBands);
 
-    GentleIntroduction(image, sh, totalBands, sh.GetSampleCount(), Rresult, Gresult, Bresult);
 
-    PrintResults("Gentle Introduction 2500 Samples", Rresult, Gresult, Bresult);
+    GentleIntroduction(image, sh, totalBands, sh.GetSampleCount(), Rresult, Gresult, Bresult);
+    PrintResults("A Gentle Introduction To PRT 2500 Samples", Rresult, Gresult, Bresult);
 
     StupidSH(image, nBands, Rresult, Gresult, Bresult);
-
     PrintResults("Stupid SH Tricks", Rresult, Gresult, Bresult);
 
     return 0;
