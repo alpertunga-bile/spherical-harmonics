@@ -1,8 +1,9 @@
 # spherical-harmonics
 
-Based on [Stupid Spherical Harmonics (SH) Tricks][def]
+Based on [Stupid Spherical Harmonics (SH) Tricks][def] and [A Gentle Introduction To Precomputed Radiance Transfer][def2]
 
 [def]: https://www.ppsloan.org/publications/StupidSH36.pdf
+[def2]: https://www.inf.ufrgs.br/~oliveira/pubs_files/Slomp_Oliveira_Patricio-Tutorial-PRT.pdf
 
 - [x] Using [PXDMath](https://github.com/alpertunga-bile/PixelDancerMath) library
 - [x] Skybox textures are taken from LearnOpenGL repository
